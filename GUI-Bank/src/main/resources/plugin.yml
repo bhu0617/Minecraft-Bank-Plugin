@@ -1,0 +1,7 @@
+name: Bank
+version: '${project.version}'
+main: bhu.guibank.Bank
+api-version: 1.19
+
+commands:
+  bank:
