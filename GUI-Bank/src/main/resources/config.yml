@@ -1,2 +1,7 @@
 interest-rate: 1
 interest-period: 864000
+host: "localhost"
+port: "3307"
+database: "test"
+username: "root"
+password: ""

@@ -12,7 +12,7 @@ public class Commands implements CommandExecutor {
     private Bank plugin;
 
     /**
-     * Constructor
+     * Initializes an instance of Bank
      */
     public Commands(Bank plugin) {
         this.plugin = plugin;

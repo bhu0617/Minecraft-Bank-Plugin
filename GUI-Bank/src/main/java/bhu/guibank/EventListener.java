@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -23,7 +24,7 @@ public class EventListener implements Listener {
     private HashSet<String> withdrawingList;
 
     /**
-     * Constructor
+     * Initializes instances of Bank and HashSet
      */
     public EventListener(Bank plugin) {
         this.plugin = plugin;
@@ -96,6 +97,7 @@ public class EventListener implements Listener {
             double bal = (double)plugin.getDataFile().getConfig().get("players." + id + ".balance");
             plugin.getDataFile().getConfig().set("players." + id + ".balance", bal + amt);
             plugin.getDataFile().saveConfig();
+            Bank.getSQLdata().setBalance(event.getPlayer().getUniqueId(), (float)(bal + amt));
             depositingList.remove(id);
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.GREEN + "Your new balance is: $" + (bal + amt));
@@ -111,6 +113,7 @@ public class EventListener implements Listener {
             double bal = (double)plugin.getDataFile().getConfig().get("players." + id + ".balance");
             plugin.getDataFile().getConfig().set("players." + id + ".balance", bal - amt);
             plugin.getDataFile().saveConfig();
+            Bank.getSQLdata().setBalance(event.getPlayer().getUniqueId(), (float)(bal - amt));
             withdrawingList.remove(id);
             event.setCancelled(true);
             event.getPlayer().sendMessage(ChatColor.GREEN + "Your new balance is: $" + (bal - amt));
@@ -123,7 +126,9 @@ public class EventListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        Bank.getSQLdata().createPlayer(player);
         String id = event.getPlayer().getUniqueId().toString();
+
         if ((double)plugin.getDataFile().getConfig().get("players." + id + ".balance") > 0) {
             Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
                 @Override
@@ -147,6 +152,7 @@ public class EventListener implements Listener {
                     interestAmt /= 100;
                     plugin.getDataFile().getConfig().set("players." + id + ".balance", newBal);
                     plugin.getDataFile().saveConfig();
+                    Bank.getSQLdata().setBalance(player.getUniqueId(), (float)newBal);
                     player.sendMessage(ChatColor.GREEN + "You have received $" + interestAmt + " in interest");
                 }
             }, 0L, plugin.getConfig().getLong("interest-period"));

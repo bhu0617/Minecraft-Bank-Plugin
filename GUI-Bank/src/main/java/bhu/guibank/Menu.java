@@ -18,7 +18,7 @@ public class Menu {
     private static Inventory mainMenu;
 
     /**
-     * Constructor
+     * Initializes an instance of Bank and creates a Bukkit inventory
      */
     public Menu(Bank plugin) {
         this.plugin = plugin;
@@ -49,7 +49,7 @@ public class Menu {
 
         ItemStack item2 = new ItemStack(Material.CHEST);
         ItemMeta meta2 = item1.getItemMeta();
-        meta1.setDisplayName(ChatColor.GREEN + "Deposit Coins");
+        meta2.setDisplayName(ChatColor.GREEN + "Deposit Coins");
         List<String> lore2 = new ArrayList<String>();
         lore2.add(ChatColor.GRAY + "Store coins in the bank.");
         meta2.setLore(lore2);

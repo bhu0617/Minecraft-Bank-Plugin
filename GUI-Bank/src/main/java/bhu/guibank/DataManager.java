@@ -18,7 +18,7 @@ public class DataManager {
     private File configFile = null;
 
     /**
-     * Constructor
+     * Initializes an instance of Bank and the default configuration of data.yml
      */
     public DataManager(Bank plugin) {
         this.plugin = plugin;
