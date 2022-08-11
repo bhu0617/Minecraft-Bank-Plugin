@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * The MySQL class establishes a connection with a specified SQL database
+ */
 public class MySQL {
     private Bank plugin;
     private String host;
