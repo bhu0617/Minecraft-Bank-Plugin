@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 /**
- * The SQLGetter class updates data in the connected SQL database
+ * The SQLGetter class updates the data in a SQL database
  */
 public class SQLGetter {
     private Bank plugin;
