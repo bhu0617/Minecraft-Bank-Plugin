@@ -10,5 +10,5 @@ This plugin provides a comprehensive banking system for Minecraft servers, enabl
 - Flexible Data Storage: Supports both YAML files and MySQL databases
 
 **Requirements**
-- Minecraft Server: Spigot 1.19 or newer
+- Minecraft Server: [Spigot 1.19](https://getbukkit.org/get/b78b59a4de300d2eea0ca32566df3def) or newer
 - Dependency: [Vault (Economy API)](https://www.spigotmc.org/resources/vault.34315/)
