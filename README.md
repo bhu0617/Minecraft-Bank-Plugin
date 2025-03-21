@@ -3,9 +3,9 @@
 This plugin provides a comprehensive banking system for Minecraft servers, enabling players to manage their currency and items through an in-game graphical menu.
 
 **Features**
-- Bank Menu: Access the menu with the command /bank
+- Banking GUI: Access the bank menu with the /bank command
 - Currency Management: Deposit or withdraw in-game currency
-- Interest Accrual: Earn interest on stored balances
+- Interest Accrual: Earn interest over time on stored balances
 - Personal Vaults: Securely store and retrieve items
 - Flexible Data Storage: Supports both YAML files and MySQL databases
 
